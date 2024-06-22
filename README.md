@@ -1,2 +1,2 @@
 # Braden-Ben-CalHacks
-Hello! hey braden 
+This is our AI Hackathon Project. Awesome!
