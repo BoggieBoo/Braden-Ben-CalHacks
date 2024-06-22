@@ -47,7 +47,7 @@ def main():
     service = get_gmail_service()
     
     # Retrieve a limited number of messages
-    messages = list_messages(service, query='', max_results=2)  # Only fetch 2 messages for quick verification
+    messages = list_messages(service, query='', max_results=10)  # Only fetch 2 messages for quick verification
 
     # Extract details for each message
     message_details = []
@@ -63,6 +63,9 @@ def main():
     
     # Display DataFrame
     print(df)
+
+    # Export the DataFrame to a CSV file
+    df.to_csv('emails.csv', index=False)
 
 if __name__ == '__main__':
     main()
