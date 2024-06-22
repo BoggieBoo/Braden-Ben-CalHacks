@@ -1,0 +1,9 @@
+test:
+  service: Postgresql
+
+local:
+  service: Postgresql
+
+local_public:
+  service: Postgresql
+  public: true # the generated URLs will not expire

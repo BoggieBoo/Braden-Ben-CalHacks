@@ -1,0 +1,676 @@
+# Conversation
+
+hear_me:
+  assistant: samantha
+  conversation: greeting
+  role: user
+  content_text: Can you hear <b>me</b>? I live in Austin, Texas
+  content_document:
+  run:
+  created_at: 2023-12-30 1:00:00
+  index: 0
+  version: 1
+
+yes_i_do:
+  assistant: samantha
+  conversation: greeting
+  role: assistant
+  content_text: Yes, I can hear you. How can I help you today?
+  content_document:
+  run: hear_me_response
+  created_at: 2023-12-30 1:01:00
+  index: 1
+  version: 1
+
+identify_photo:
+  assistant: samantha
+  conversation: greeting
+  role: user
+  content_text: |
+    I own a cat. Can you identify photos?
+
+    jpg
+    png
+    gif
+  content_document:
+  run:
+  created_at: 2023-12-30 1:02:00
+  index: 2
+  version: 1
+
+photo_identified:
+  assistant: samantha
+  conversation: greeting
+  role: assistant
+  content_text: Yes I can.
+  content_document:
+  run: identify_photo_response
+  created_at: 2023-12-30 1:03:00
+  index: 3
+  version: 1
+
+what_day:
+  assistant: samantha
+  conversation: greeting
+  role: user
+  content_text: Do you know what day it is?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:04:00
+  index: 4
+  version: 1
+
+dont_know_day:
+  assistant: samantha
+  conversation: greeting
+  role: assistant
+  content_text: I do not know the current day.
+  content_document:
+  run: what_day_response
+  created_at: 2023-12-30 1:05:00
+  cancelled_at: 2023-12-30 1:05:03
+  index: 5
+  version: 1
+
+alive:
+  assistant: samantha
+  conversation: greeting
+  role: user
+  content_text: Are you alive?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:06:00
+  index: 6
+  version: 1
+
+im_a_bot:
+  assistant: samantha
+  conversation: greeting
+  role: assistant
+  content_text: |
+    No, I'm a bot. I can also help with writing `code` such as:
+
+    ```sql
+    SELECT * FROM users
+    ```
+
+    And one more line beneath the code block.
+  content_document:
+  run: alive_response
+  created_at: 2023-12-30 1:07:00
+  index: 7
+  version: 1
+
+
+# Next conversation
+
+your_name:
+  assistant: samantha
+  conversation: attachment
+  role: user
+  content_text: What is your name
+  content_document:
+  run:
+  created_at: 2023-12-30 1:00:00
+  index: 0
+  version: 1
+
+listening:
+  assistant: samantha
+  conversation: attachment
+  role: assistant
+  content_text: Yes, I can hear you. How can I help you today?
+  content_document:
+  run: your_name_response
+  created_at: 2023-12-30 1:01:00
+  index: 1
+  version: 1
+
+examine_this:
+  assistant: samantha
+  conversation: attachment
+  role: user
+  content_text: What do you see in this photo?
+  content_document: # the cat photo is not attached in this field, currently it's attached at the document level. info: https://platform.openai.com/docs/assistants/tools/knowledge-retrieval and https://platform.openai.com/docs/guides/vision
+  run:
+  created_at: 2023-12-30 1:02:00
+  index: 2
+  version: 1
+
+photo_examined:
+  assistant: samantha
+  conversation: attachment
+  role: assistant
+  content_text: That looks like a cat.
+  content_document:
+  run: examine_this_response
+  created_at: 2023-12-30 1:03:00
+  index: 3
+  version: 1
+
+what_month:
+  assistant: samantha
+  conversation: attachment
+  role: user
+  content_text: Do you know what month it is?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:04:00
+  index: 4
+  version: 1
+
+dont_know_month:
+  assistant: samantha
+  conversation: attachment
+  role: assistant
+  content_text: I do not know the current month.
+  content_document:
+  run: what_month_response
+  created_at: 2023-12-30 1:05:00
+  index: 5
+  version: 1
+
+human:
+  assistant: samantha
+  conversation: attachment
+  role: user
+  content_text: Are you human?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:06:00
+  index: 6
+  version: 1
+
+not_human:
+  assistant: samantha
+  conversation: attachment
+  role: assistant
+  content_text: No, I am not
+  content_document:
+  run: human_response
+  created_at: 2023-12-30 1:07:00
+  index: 7
+  version: 1
+
+
+# Next conversation
+
+can_you_hear:
+  assistant: samantha
+  conversation: attachments
+  role: user
+  content_text: Can you hear me?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:00:00
+  index: 0
+  version: 1
+
+yes_i_can:
+  assistant: samantha
+  conversation: attachments
+  role: assistant
+  content_text: Yes, I can hear you.
+  content_document:
+  run: can_you_hear_response
+  created_at: 2023-12-30 1:01:00
+  index: 1
+  version: 1
+
+one_attachment:
+  assistant: samantha
+  conversation: attachments
+  role: user
+  content_text: What is this?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:02:00
+  index: 2
+  version: 1
+
+its_a_cat:
+  assistant: samantha
+  conversation: attachments
+  role: assistant
+  content_text: It's a cat
+  content_document:
+  run: one_attachment_response
+  created_at: 2023-12-30 1:03:00
+  index: 3
+  version: 1
+
+two_attachments:
+  assistant: samantha
+  conversation: attachments
+  role: user
+  content_text: Can you see both files?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:04:00
+  index: 4
+  version: 1
+
+yes_cat_and_dog:
+  assistant: samantha
+  conversation: attachments
+  role: assistant
+  content_text: Yes, I see a cat and a dog.
+  content_document:
+  run: two_attachments_response
+  created_at: 2023-12-30 1:05:00
+  index: 5
+  version: 1
+
+# Next conversation
+
+popstate:
+  assistant: keith_gpt4
+  conversation: javascript
+  role: user
+  content_text: what does popstate do in javascript?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:00:00
+  index: 0
+  version: 1
+
+popstate_event:
+  assistant: keith_gpt4
+  conversation: javascript
+  role: assistant
+  content_text: |
+    Popstate is an event in JavaScript that fires when the active history entry changes, typically due to the user navigating back or forward in their browser history.
+
+    This is a second paragraph. This ends the response.
+  content_document:
+  run: popstate_response
+  created_at: 2023-12-30 1:01:00
+  index: 1
+  version: 1
+
+
+# Next conversation
+
+ruby_version:
+  assistant: samantha
+  conversation: ruby_version
+  role: user
+  content_text: what is the latest version of ruby?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:00:00
+  index: 0
+  version: 1
+
+latest_ruby_version:
+  assistant: samantha
+  conversation: ruby_version
+  role: assistant
+  content_text: The latest version of Ruby can vary, but as of my last update, it was Ruby 3.1.2. For the most current version, checking the official Ruby website or its GitHub page is recommended.
+  content_document:
+  run: ruby_version_response
+  created_at: 2023-12-30 1:01:00
+  index: 1
+  version: 1
+
+
+# Next conversation
+
+hello_claude:
+  assistant: keith_claude3
+  conversation: hello_claude
+  role: user
+  content_text: Hi Claude, can you hear me?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:00:00
+  index: 0
+  version: 1
+
+claude_replying:
+  assistant: keith_claude3
+  conversation: hello_claude
+  role: assistant
+  content_text: Yes, I can hear you.
+  content_document:
+  run:
+  created_at: 2023-12-30 1:01:00
+  index: 1
+  version: 1
+
+claude_age:
+  assistant: keith_claude3
+  conversation: hello_claude
+  role: assistant
+  content_text: How old are you?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:02:00
+  index: 2
+  version: 1
+
+claude_age_replying:
+  assistant: keith_claude3
+  conversation: hello_claude
+  role: assistant
+  content_text: I am an AI assistant and I do not have an age.
+  content_document:
+  run:
+  created_at: 2023-12-30 1:03:00
+  index: 3
+  version: 1
+
+
+# Next conversation
+
+filter_map:
+  assistant: rob_gpt4
+  conversation: debugging
+  role: user
+  content_text: what is the syntax of filter_map ruby?
+  content_document:
+  run:
+  created_at: 2023-12-30 1:00:00
+  index: 0
+  version: 1
+
+filter_map_example:
+  assistant: rob_gpt4
+  conversation: debugging
+  role: assistant
+  content_text: array.filter_map { |item| expression if condition }
+  content_document:
+  run: filter_map_response
+  created_at: 2023-12-30 1:01:00
+  index: 1
+  version: 1
+
+
+# Next conversation
+
+message0_v1:
+  assistant: samantha
+  conversation: versioned
+  role: user
+  content_text: What's your favorite color?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:00:00
+  index: 0
+  version: 1
+
+message1_v1:
+  assistant: samantha
+  conversation: versioned
+  role: assistant
+  content_text: My favorite color is blue.
+  content_document:
+  run: message0_v1_response
+  created_at: 2023-1-1 1:01:00
+  index: 1
+  version: 1
+
+message2_v1:
+  assistant: samantha
+  conversation: versioned
+  role: user
+  content_text: What do you eat?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:02:00
+  index: 2
+  version: 1
+  branched: true
+  branched_from_version: 2
+
+message3_v1:
+  assistant: samantha
+  conversation: versioned
+  role: assistant
+  content_text: I don't eat food.
+  content_document:
+  run: message2_v1_response
+  created_at: 2023-1-1 1:03:00
+  index: 3
+  version: 1
+
+message2_v2:
+  assistant: keith_gpt4
+  conversation: versioned
+  role: user
+  content_text: Where were you born?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:04:00
+  index: 2
+  version: 2
+  branched: true
+
+message3_v2:
+  assistant: keith_gpt4
+  conversation: versioned
+  role: assistant
+  content_text: I was born in San Francisco.
+  content_document:
+  run: message2_v2_response
+  created_at: 2023-1-1 1:05:00
+  index: 3
+  version: 2
+
+message4_v2:
+  assistant: keith_gpt4
+  conversation: versioned
+  role: user
+  content_text: What do you think of the city?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:06:00
+  index: 4
+  version: 2
+
+message5_v2:
+  assistant: keith_gpt4
+  conversation: versioned
+  role: assistant
+  content_text: It is a beautiful city.
+  content_document:
+  run: message4_v2_response
+  created_at: 2023-1-1 1:07:00
+  index: 5
+  version: 2
+
+
+# Next conversation
+
+msg0_v1:
+  assistant: samantha
+  conversation: versioned2
+  role: user
+  content_text: What's your favorite color?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:00:00
+  index: 0
+  version: 1
+
+msg1_v1:
+  assistant: samantha
+  conversation: versioned2
+  role: assistant
+  content_text: My favorite color is blue.
+  content_document:
+  run: msg0_v1_response
+  created_at: 2023-1-1 1:01:00
+  index: 1
+  version: 1
+
+msg2_v1:
+  assistant: samantha
+  conversation: versioned2
+  role: user
+  content_text: What do you eat?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:02:00
+  index: 2
+  version: 1
+  branched: true
+
+msg2_v2:
+  assistant: samantha
+  conversation: versioned2
+  role: assistant
+  content_text: I was born in San Francisco.
+  content_document:
+  run: msg2_v1_response
+  created_at: 2023-1-1 1:05:00
+  index: 2
+  version: 2
+  branched: true
+  branched_from_version: 1
+
+msg3_v2:
+  assistant: samantha
+  conversation: versioned2
+  role: user
+  content_text: What do you think of the city?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:06:00
+  index: 3
+  version: 2
+
+msg4_v2:
+  assistant: samantha
+  conversation: versioned2
+  role: assistant
+  content_text: It is a beautiful city.
+  content_document:
+  run: msg3_v2_response
+  created_at: 2023-1-1 1:07:00
+  index: 4
+  version: 2
+  branched: true
+
+
+msg2_v3:
+  assistant: samantha
+  conversation: versioned2
+  role: assistant
+  content_text: I was born in the city of San Francisco
+  content_document:
+  run: msg2_v1_response
+  created_at: 2023-1-1 1:07:00
+  index: 2
+  version: 3
+  branched: true
+  branched_from_version: 2
+
+msg3_v3:
+  assistant: samantha
+  conversation: versioned2
+  role: user
+  content_text: Do you like it there?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:07:00
+  index: 3
+  version: 3
+
+
+msg4_v4:
+  assistant: samantha
+  conversation: versioned2
+  role: assistant
+  content_text: It is a nice city.
+  content_document:
+  run: msg3_v2_response
+  created_at: 2023-1-1 1:07:00
+  index: 4
+  version: 4
+  branched: true
+  branched_from_version: 2
+
+msg2_v5:
+  assistant: samantha
+  conversation: versioned2
+  role: user
+  content_text: Do you like the food?
+  content_document:
+  run:
+  created_at: 2023-1-1 1:03:00
+  index: 2
+  version: 5
+  branched: true
+  branched_from_version: 3
+
+
+# Next conversation — dropped RUN from these
+
+check_weather:
+  assistant: samantha
+  conversation: weather
+  role: user
+  tool_call_id:
+  content_text: What is the weather in Austin?
+  content_document:
+  content_tool_calls:
+  created_at: 2023-12-30 1:00:00
+  processed_at: 2023-12-30 1:00:00
+  index: 0
+  version: 1
+
+weather_tool_call:
+  assistant: samantha
+  conversation: weather
+  role: assistant
+  tool_call_id:
+  content_text:
+  content_tool_calls: '[{"index": 0, "id": "abc123", "type": "function", "function": {"name": "helloworld_hi", "arguments": {"name": "World"}}}]'
+  content_document:
+  created_at: 2023-12-30 1:01:00
+  processed_at: 2023-12-30 1:01:00
+  index: 1
+  version: 1
+
+weather_tool_result:
+  assistant: samantha
+  conversation: weather
+  role: tool
+  tool_call_id: abc123
+  content_text: weather is
+  content_tool_calls:
+  content_document:
+  created_at: 2023-12-30 1:02:00
+  processed_at: 2023-12-30 1:02:00
+  index: 2
+  version: 1
+
+weather_explained:
+  assistant: samantha
+  conversation: weather
+  role: assistant
+  tool_call_id:
+  content_text: The weather in Austin is
+  content_tool_calls:
+  content_document:
+  created_at: 2023-12-30 1:03:00
+  processed_at: 2023-12-30 1:03:00
+  index: 3
+  version: 1
+
+
+# Next conversation
+
+trees_explained:
+  assistant: keith_gpt3
+  conversation: trees
+  role: assistant
+  tool_call_id:
+  content_text: The trees in Australia are
+  content_tool_calls:
+  content_document:
+  created_at: 2024-05-25 1:03:00
+  processed_at: 2024-05-25 1:03:00
+  index: 0
+  version: 1
