@@ -45,7 +45,6 @@ def get_message_details(service, message_id):
 
 def main():
     service = get_gmail_service()
-    
     # Retrieve a limited number of messages
     messages = list_messages(service, query='', max_results=10)  # Only fetch 2 messages for quick verification
 
@@ -62,10 +61,19 @@ def main():
     df['internalDate'] = df['internalDate'].apply(lambda x: datetime.fromtimestamp(int(x)/1000).strftime('%Y-%m-%d %H:%M:%S'))
     
     # Display DataFrame
-    print(df)
+    print(df[0,"snippet"])
 
     # Export the DataFrame to a CSV file
     df.to_csv('emails.csv', index=False)
 
-if __name__ == '__main__':
-    main()
+
+
+"""""
+def main():
+service = get_gmail_service()
+function
+
+"""""
+
+
+main()
