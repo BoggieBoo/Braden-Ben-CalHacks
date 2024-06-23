@@ -56,12 +56,12 @@ def get_emails(service, query='', max_results=10):
     # Convert timestamp to readable date
     df['internalDate'] = df['internalDate'].apply(lambda x: datetime.fromtimestamp(int(x)/1000).strftime('%Y-%m-%d %H:%M:%S'))
     
-    # Display DataFrame
-    return df.to_csv('emails.csv', index=False)
+    return df
 
 def main():
     service = login()
     emails = get_emails(service)
+    print(emails)
     while True:
         question = input("Please enter something: ")
         print(ask_gpt(question, emails))
