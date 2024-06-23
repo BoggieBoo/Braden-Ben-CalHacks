@@ -3,7 +3,6 @@ from email.message import EmailMessage
 import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from login import login
 
 # Path to the downloaded JSON credentials
 CREDENTIALS_FILE = 'credentials.json'  # Ensure this is the correct path

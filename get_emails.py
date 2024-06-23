@@ -1,12 +1,6 @@
 import pandas as pd
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
 from dotenv import load_dotenv
 from datetime import datetime
-from login import login
-
-from ask_gpt import ask_gpt
 
 load_dotenv()
 
