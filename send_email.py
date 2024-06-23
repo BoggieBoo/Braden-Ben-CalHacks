@@ -3,12 +3,12 @@ from email.message import EmailMessage
 import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from main import login
+from login import login
 
 # Path to the downloaded JSON credentials
 CREDENTIALS_FILE = 'credentials.json'  # Ensure this is the correct path
 
-def gmail_send_message(service, to, subject, content):
+def gmail_send_message(to, subject, content, service):
   """Create and send an email message
   Print the returned  message id
   Returns: Message object, including message id
@@ -43,8 +43,8 @@ def gmail_send_message(service, to, subject, content):
     send_message = None
   return send_message
 
-
-service = login()
-gmail_send_message(service, to="leungbraden@gmail.com", subject="Hi", content='sup')
+if __name__ == "__main__":
+    service = login()    
+    gmail_send_message(to="leungbraden@gmail.com", subject="Hi", content='sup', service=service)
 
 
