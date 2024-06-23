@@ -6,7 +6,7 @@ from datetime import datetime
 from ask_gpt import ask_gpt
 
 # Scopes required for the Gmail API
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.readonly']
 
 # Path to the downloaded JSON credentials
 CREDENTIALS_FILE = 'credentials.json'  # Ensure this is the correct path
@@ -20,14 +20,18 @@ def login():
     service = build('gmail', 'v1', credentials=creds)
     return service
 
-def get_message_details(service, message_id):
+# Email sizes
+snippet = 'snippet'
+full = 'raw'
+
+def get_message_details(service, message_id, size=snippet):
     message = service.users().messages().get(userId='me', id=message_id).execute()
     payload = message.get('payload', {})
     headers = payload.get('headers', [])
 
     details = {
         'id': message_id,
-        'snippet': message.get('snippet', ''),
+        size: message.get(size, ''),
         'internalDate': message.get('internalDate', ''),
         'isUnread': 'UNREAD' in message.get('labelIds', []),
         'isSpam': 'SPAM' in message.get('labelIds', [])
@@ -56,6 +60,7 @@ def get_emails(service, query='', max_results=10):
     # Convert timestamp to readable date
     df['internalDate'] = df['internalDate'].apply(lambda x: datetime.fromtimestamp(int(x)/1000).strftime('%Y-%m-%d %H:%M:%S'))
     
+    # Writes to emails.csv
     df.to_csv("emails.csv", index=False)
     return df
 
@@ -64,7 +69,8 @@ def main():
     emails = get_emails(service)
     print(emails)
     while True:
-        question = input("Please enter something: ")
-        print(ask_gpt(question, emails))
-    
-main()
+        question = input("\nAsk about your gmail: ")
+        print("\nGmail Assistant:\n\n" + ask_gpt(question, emails))
+
+if __name__ == "__main__": # test
+    main()
